@@ -1,0 +1,14 @@
+{
+  "name": "udevops-httpd",
+  "version": "0.1.0",
+  "author": "udevops42",
+  "summary": "installation and configuration of apache with vhost and apache module",
+  "license": "Apache 2.0",
+  "source": "udevops42",
+  "issues_url": "https://github.com/udevops42",
+  "project_page": "https://github.com/udevops42",
+  "dependencies": [
+    {"version_requirement":">= 1.0.0","name":"puppetlabs-stdlib"}
+  ]
+}
+
