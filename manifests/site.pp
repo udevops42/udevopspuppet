@@ -1,9 +1,13 @@
 node 'client.localdomain' {
-defineres::mycustomresource { "test":
-filename => "/tmp/india",
-secondfile => "/tmp/delhi",
-somepackage => "telnet",
-someservice =>  "httpd"
+class { "httpd":
+package        => "httpd",
+package_ensure => "absent",
+config_file    => "/etc/httpd/conf/httpd.conf",
+file_ensure    => "file",
+file_source    => "puppet:///modules/httpd/httpd.conf",
+service        => "httpd",
+service_ensure => "stopped",
+service_enable => "false",
 }
 }
 
