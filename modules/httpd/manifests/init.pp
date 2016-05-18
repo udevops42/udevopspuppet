@@ -49,7 +49,8 @@ $service_enable = $httpd::params::service_enable,
 inherits httpd::params
 {
 case $::osfamily {
-        'RedHat' : {
+        
+       'RedHat' : {
           package {$package:
                 ensure => $package_ensure
                 }
@@ -64,6 +65,7 @@ case $::osfamily {
                   subscribe => File[$config_file]
                  }
               }
+      
         'Debian' : {
             package {"apache2":
                    ensure => installed
@@ -74,10 +76,15 @@ case $::osfamily {
                    require => Package[$package]
                   }
             service { "apache2":
-                   ensure => running
+                   ensure => running,
                    subscribe => File[$config_file]
                     }
                   }
-         default : {}
+         default : { 
+                 file {"/tmp/abcdef":
+                       ensure => file,
+                       content => "This is a demo for apache installation and configuraiton using all concepts"
+                       }
+                    }
                  }
                }

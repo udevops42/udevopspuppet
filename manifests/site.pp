@@ -1,18 +1,11 @@
 node 'client.localdomain' {
-class { "httpd":
-package        => "httpd",
-package_ensure => "absent",
-config_file    => "/etc/httpd/conf/httpd.conf",
-file_ensure    => "file",
-file_source    => "puppet:///modules/httpd/httpd.conf",
-service        => "httpd",
-service_ensure => "stopped",
-service_enable => "false",
-}
+include roles::webserver
 }
 
-
-
+node 'webserver.tx.rr.com' {
+     include roles::webserver
+     include tomcat
+}
 
 
 
